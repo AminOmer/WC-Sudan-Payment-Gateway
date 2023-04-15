@@ -6,6 +6,7 @@ Tested up to: 5.8
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Plugin Logo: mbok-payment-gateway.png
 
 == Description ==
 
