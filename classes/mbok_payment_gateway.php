@@ -528,7 +528,8 @@ add_action( 'woocommerce_checkout_update_order_meta', 'abpt_custom_payment_updat
 function abpt_custom_payment_update_order_meta( $order_id ) {
     if($_POST['payment_method'] != 'mbok_gateway')
         return;
-
+		
+    update_post_meta( $order_id, 'mbok_trx', sanitize_text_field( $_POST['bank_payment_trx'] ) );
     update_post_meta( $order_id, 'attach_id', sanitize_text_field( $_POST['attach_id'] ) );
 }
 
@@ -543,9 +544,93 @@ function abpt_custom_checkout_field_display_admin_order_meta($order){
         return;
 
     $attach_id = get_post_meta( $order->id, 'attach_id', true );
+    $mbok_trx = get_post_meta( $order->id, 'mbok_trx', true );
 	$src = wp_get_attachment_url($attach_id, 'full');
-    echo '<p><strong>'.__( 'mBok Payment Invoice' ).':</strong> <a href="'.$src.'"><img src="'.$src.'" height="50"/></a></p>';
+    echo '<p><strong>'.__( 'mBok Payment Receipt' ).':</strong> <a class="mbok-image-popup" href="'.$src.'"><img src="'.$src.'" height="50"/></a></p>';
+    echo '<p><strong>'.__( 'Receipt TRX' ).':</strong> ' . $mbok_trx . '</p>';
 }
+
+// Add custom column to orders table
+add_filter( 'manage_edit-shop_order_columns', 'mbok_payment_order_column', 20 );
+function mbok_payment_order_column( $columns ) {
+    $new_columns = array();
+    foreach ( $columns as $column_name => $column_info ) {
+        $new_columns[ $column_name ] = $column_info;
+        if ( 'order_total' === $column_name ) {
+            $new_columns['mbok_trx'] = __( 'Trx', 'text-domain' );
+            $new_columns['mbok_receipt'] = __( 'Receipt', 'text-domain' );
+        }
+    }
+    return $new_columns;
+}
+// Add data to custom column
+add_action( 'manage_shop_order_posts_custom_column', 'mbok_payment_column_content' );
+function mbok_payment_column_content( $column ) {
+    global $post;
+    if ( 'mbok_trx' === $column ) {
+        echo get_post_meta( $post->ID, 'mbok_trx', true);
+    }
+    if ( 'mbok_receipt' === $column ) {
+        $attach_id = get_post_meta( $post->ID, 'attach_id', true);
+        $src = wp_get_attachment_url($attach_id, 'full');
+        echo '<a class="mbok-image-popup" target="_blank" href="'.$src.'"><img src="'.$src.'" height="50"/></a>';
+    }
+}
+
+function mbok_enqueue_magnific_popup_script() {
+    global $pagenow, $typenow;
+
+	// Enqueue Magnific Popup script
+    if (is_admin() && ($pagenow === 'edit.php' || $pagenow === 'post.php') && $typenow === 'shop_order') {
+        wp_enqueue_script('magnific-popup', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js', array('jquery'), '1.1.0', true);
+        add_action('admin_footer', function() {
+            ?>
+            <script>
+                jQuery(document).ready(function($) {
+                    $('.mbok-image-popup').magnificPopup({
+                        type: 'image',
+                        gallery: {
+                            enabled: false
+                        }
+                    });
+                });
+            </script>
+            <?php
+        });
+		?>
+		<style>
+			.post-type-shop_order .column-order_number a {
+				pointer-events: none;
+				cursor: default;
+			}
+			.post-type-shop_order tbody tr {
+				pointer-events: none;
+				cursor: default;
+			}
+            .post-type-shop_order tbody tr td *{
+                pointer-events: all;
+                cursor: pointer;
+            }
+		</style>
+		<?php
+    }
+}
+add_action('admin_enqueue_scripts', 'mbok_enqueue_magnific_popup_script');
+
+
+// Enqueue scripts and styles
+add_action( 'admin_enqueue_scripts', 'my_admin_enqueue_scripts' );
+function my_admin_enqueue_scripts( $hook_suffix ) {
+    // Get the current admin page
+    global $pagenow, $typenow;
+    // Check if we're on the Orders page and the 'post_type' query parameter is set to 'shop_order'
+    if (is_admin() && ($pagenow === 'edit.php' || $pagenow === 'post.php') && $typenow === 'shop_order') {
+        wp_enqueue_script( 'jquery' );
+        // Enqueue Magnific Popup CSS
+        wp_enqueue_style( 'magnific-popup', '//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css', array(), '1.1.0' );
+    }
+}
+
 
 /**
  * Get Payment table for each acoount in checkout page
