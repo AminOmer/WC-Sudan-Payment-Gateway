@@ -599,17 +599,17 @@ function mbok_enqueue_magnific_popup_script() {
         });
 		?>
 		<style>
-			.post-type-shop_order .column-order_number a {
-				pointer-events: none;
-				cursor: default;
-			}
 			.post-type-shop_order tbody tr {
 				pointer-events: none;
 				cursor: default;
 			}
             .post-type-shop_order tbody tr td *{
                 pointer-events: all;
-                cursor: pointer;
+                cursor: unset;
+            }
+            .post-type-shop_order tbody tr th *{
+                pointer-events: all;
+                cursor: unset;
             }
 		</style>
 		<?php
