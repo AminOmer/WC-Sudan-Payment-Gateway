@@ -3,7 +3,7 @@ jQuery(document).ready( function($) {
         var fd = new FormData();
         fd.append('file', $('.bank_payment_receipt')[0].files[0]);
         fd.append('action', 'invoice_response');  
-        
+        $('.receipt-preview').addClass('loading');
         $.ajax({
             type: 'POST',
             url: the_ajax_script.ajaxurl,
@@ -11,6 +11,7 @@ jQuery(document).ready( function($) {
             contentType: false,
             processData: false,
             success: function(response){
+                $('.receipt-preview').removeClass('loading');
                 console.log(response);
             }
         });

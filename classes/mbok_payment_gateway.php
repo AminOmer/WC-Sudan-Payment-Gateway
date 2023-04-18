@@ -253,6 +253,8 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 					margin: 2px 5px;
 					padding: 10px;
 					border-radius: 16px;
+					display: flex;
+					align-items: center;
 				}
 
 				table.bank-table tbody td {
@@ -262,14 +264,18 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 				table.bank-table tbody td .td-inner{
 					background-color: #09527e66;
 					font-size: 15px;
+					white-space: nowrap;
 					color: #ffffff;
+				}
+				
+				table.bank-table td .td-inner.td-name{
+					justify-content: space-between;
 				}
 				table.bank-table .account-number{
 					position: relative;
 					display: inline-block;
 					border: solid 1px #ffffff36;
 					padding: 5px 30px;
-					margin-top: 11px;
 					border-radius: 25px;
 					background-color: #4b799b;
 					cursor: pointer;
@@ -305,6 +311,21 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 				table.bank-table .account-number:active{
 					transform: translateY(2px);
 					box-shadow: 0px 0px #506b7f;
+				}
+				.receipt-preview.loading{
+					position: relative;
+					opacity: 0.25;
+					padding-left: 2.618em;
+				}
+				.receipt-preview.loading::after{
+					font-family: WooCommerce;
+					content: "\e01c";
+					vertical-align: top;
+					font-weight: 400;
+					position: absolute;
+					top: calc(50% - 14px);
+					left: calc(50% - 7px);
+					animation: spin 2s linear infinite;
 				}
 				@media screen and (max-width: 800px) {
 					table.bank-table tbody td {
@@ -431,6 +452,7 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 					fd.append('file', $('.bank_payment_receipt')[0].files[0]);
 					fd.append('action', 'invoice_response');  
 					
+					$('.receipt-preview').addClass('loading');
 					$.ajax({
 						type: 'POST',
 						url: the_ajax_script.ajaxurl,
@@ -441,7 +463,9 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 							if(response=='0'){
 								alert('Invalid File, please upload correct file');
 								$('.attach_id').val('');
+								document.getElementById('receiptPreview').src = '';
 							}else{
+								$('.receipt-preview').removeClass('loading');
 								$('.attach_id').val(response);
 							}
 						}
