@@ -603,10 +603,7 @@ function mbok_enqueue_magnific_popup_script() {
 				pointer-events: none;
 				cursor: default;
 			}
-            .post-type-shop_order tbody tr td *{
-                pointer-events: all;
-                cursor: unset;
-            }
+            .post-type-shop_order tbody tr td *,
             .post-type-shop_order tbody tr th *{
                 pointer-events: all;
                 cursor: unset;
