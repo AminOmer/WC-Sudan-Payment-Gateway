@@ -31,6 +31,7 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
         $this->title            = $this->get_option('title');
         $this->description      = $this->get_option('description');
         $this->instructions     = $this->get_option('instructions');
+        $this->require_trx		= $this->get_option('require_trx');
         
         // BACS account fields shown on the checkout page and in admin configuration tab.
 		$this->account_details = get_option(
@@ -84,6 +85,13 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
                 'description' => __('Payment method description that the customer will see on your checkout.', $this->domain),
                 'default'     => __('Pay through your bank to the account (or one of the accounts) shown below, then send us a copy of the transfer invoice to be verified by our team, then confirm the order', $this->domain),
                 'desc_tip'    => true,
+            ),
+
+            'require_trx' => array(
+                'title'   => __('Require TRX?', $this->domain),
+                'type'    => 'checkbox',
+                'label'   => __('Transaction ID', $this->domain),
+                'default' => 'no'
             ),
 
             'instructions' => array(
@@ -454,14 +462,16 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 
 		</style>
 		<div id="mbokReceipt">
-			<div class="form-group form-group-trx">
-				<label for="bank_payment_trx" class=""><?php _e('Enter the bank payment TRX', $this->domain); ?></label>
-				<input type="text" name="bank_payment_trx" class="bank_payment_trx">
-			</div>
-			<hr style="border-color: white;">
+			<?php if($this->require_trx == 'on'): ?>
+				<div class="form-group form-group-trx">
+					<label for="bank_payment_trx" class=""><?php _e('Enter the bank payment TRX', $this->domain); ?></label>
+					<input type="text" name="bank_payment_trx" class="bank_payment_trx" required>
+				</div>
+				<hr style="border-color: white;">
+			<?php endif; ?>
 			<div class="form-group">
 				<label for="bank_payment_receipt" class="payment-receipt-btn"><i class="fa-solid fa-upload"></i> <?php _e('Upload mBok Receipt Image', $this->domain); ?></label>
-				<input type="file" id="bank_payment_receipt" name="bank_payment_receipt" class="bank_payment_receipt" onclick="this.value=null;document.getElementById('receiptPreview').src = ''" onchange="document.getElementById('receiptPreview').src = window.URL.createObjectURL(this.files[0])">
+				<input type="file" id="bank_payment_receipt" name="bank_payment_receipt" class="bank_payment_receipt" onclick="this.value=null;document.getElementById('receiptPreview').src = ''" onchange="document.getElementById('receiptPreview').src = window.URL.createObjectURL(this.files[0])" required>
 			</div>
 			<div class="form-group receipt-preview">
 				<img id="receiptPreview"/>
@@ -509,7 +519,7 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 		if(
 			(!isset($_POST['attach_id']) || empty( $_POST['attach_id']) ) ||
 			(!is_numeric($_POST['attach_id'])) ||
-			(!isset($_POST['bank_payment_trx']) || empty($_POST['bank_payment_trx']))
+			(($this->require_trx == 'on') && (!isset($_POST['bank_payment_trx']) || empty($_POST['bank_payment_trx'])))
 		)
 		{
 			wc_add_notice(__('<strong>mBok</strong> Please insert Receipt Image and TRX number correctly'), 'error');
