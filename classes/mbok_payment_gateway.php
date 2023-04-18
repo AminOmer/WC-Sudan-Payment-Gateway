@@ -318,17 +318,17 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 					padding-left: 2.618em;
 				}
 
-				label.loading{
+				.payment-receipt-btn.loading{
 					position: relative;
 					opacity: 0.25;
 					padding-left: 2.618em;
 				}
 
-				receipt-preview.loading img {
+				.receipt-preview.loading img {
 					opacity: 0.25;
 				}
 				
-				label.loading::after,
+				.payment-receipt-btn.loading::after,
 				.receipt-preview.loading::after{
 					font-family: WooCommerce;
 					content: "\e01c";
@@ -339,7 +339,7 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 					animation: spin 2s linear infinite;
 				}
 
-				label.loading::after{
+				.payment-receipt-btn.loading::after{
 					font-size: 20px;
 					top: calc(50% - 14px);
 					left: calc(50% - 15px);
@@ -475,6 +475,7 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 					fd.append('file', $('.bank_payment_receipt')[0].files[0]);
 					fd.append('action', 'invoice_response');  
 					
+					$('.payment-receipt-btn').addClass('loading');
 					$('.receipt-preview').addClass('loading');
 					$.ajax({
 						type: 'POST',
@@ -489,6 +490,7 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 								document.getElementById('receiptPreview').src = '';
 							}else{
 								$('.receipt-preview').removeClass('loading');
+								$('.payment-receipt-btn').removeClass('loading');
 								$('.attach_id').val(response);
 							}
 						}
