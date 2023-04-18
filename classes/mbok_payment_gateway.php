@@ -314,8 +314,10 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 				}
 				.receipt-preview.loading{
 					position: relative;
-					opacity: 0.25;
 					padding-left: 2.618em;
+				}
+				.receipt-preview.loading img {
+					opacity: 0.25;
 				}
 				.receipt-preview.loading::after{
 					font-family: WooCommerce;
@@ -323,8 +325,10 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 					vertical-align: top;
 					font-weight: 400;
 					position: absolute;
-					top: calc(50% - 14px);
-					left: calc(50% - 7px);
+					font-size: 35px;
+					top: calc(50% - 30px);
+					color: white;
+					left: calc(50% - 15px);
 					animation: spin 2s linear infinite;
 				}
 				@media screen and (max-width: 800px) {
