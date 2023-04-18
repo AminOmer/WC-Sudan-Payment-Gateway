@@ -462,7 +462,7 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 
 		</style>
 		<div id="mbokReceipt">
-			<?php if($this->require_trx == 'on'): ?>
+			<?php if($this->require_trx == 'yes'): ?>
 				<div class="form-group form-group-trx">
 					<label for="bank_payment_trx" class=""><?php _e('Enter the bank payment TRX', $this->domain); ?></label>
 					<input type="text" name="bank_payment_trx" class="bank_payment_trx" required>
@@ -519,7 +519,7 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 		if(
 			(!isset($_POST['attach_id']) || empty( $_POST['attach_id']) ) ||
 			(!is_numeric($_POST['attach_id'])) ||
-			(($this->require_trx == 'on') && (!isset($_POST['bank_payment_trx']) || empty($_POST['bank_payment_trx'])))
+			(($this->require_trx == 'yes') && (!isset($_POST['bank_payment_trx']) || empty($_POST['bank_payment_trx'])))
 		)
 		{
 			wc_add_notice(__('<strong>mBok</strong> Please insert Receipt Image and TRX number correctly'), 'error');
