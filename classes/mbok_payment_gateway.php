@@ -312,24 +312,43 @@ class MBOK_Payment_Gateway extends WC_Payment_Gateway
 					transform: translateY(2px);
 					box-shadow: 0px 0px #506b7f;
 				}
-				.receipt-preview.loading{
+				
+				table.bank-table.receipt-preview.loading{
 					position: relative;
 					padding-left: 2.618em;
 				}
-				.receipt-preview.loading img {
+
+				table.bank-tablelabel.loading{
+					position: relative;
+					opacity: 0.25;
+					padding-left: 2.618em;
+				}
+
+				table.bank-table .receipt-preview.loading img {
 					opacity: 0.25;
 				}
-				.receipt-preview.loading::after{
+				
+				table.bank-table label.loading::after,
+				table.bank-table .receipt-preview.loading::after{
 					font-family: WooCommerce;
 					content: "\e01c";
 					vertical-align: top;
 					font-weight: 400;
 					position: absolute;
+					color: white;
+					animation: spin 2s linear infinite;
+				}
+
+				table.bank-table label.loading::after{
+					font-size: 20px;
+					top: calc(50% - 14px);
+					left: calc(50% - 15px);
+				}
+				
+				table.bank-table .receipt-preview.loading::after{
 					font-size: 35px;
 					top: calc(50% - 30px);
-					color: white;
 					left: calc(50% - 15px);
-					animation: spin 2s linear infinite;
 				}
 				@media screen and (max-width: 800px) {
 					table.bank-table tbody td {
