@@ -587,9 +587,9 @@ add_action( 'woocommerce_checkout_update_order_meta', 'abpt_custom_payment_updat
 function abpt_custom_payment_update_order_meta( $order_id ) {
     if($_POST['payment_method'] != 'mbok_gateway')
         return;
-		
-    update_post_meta( $order_id, 'mbok_trx', sanitize_text_field( $_POST['bank_payment_trx'] ) );
-    update_post_meta( $order_id, 'attach_id', sanitize_text_field( $_POST['attach_id'] ) );
+	
+    update_post_meta( $order_id, 'mbok_trx', sanitize_text_field( $_POST['bank_payment_trx'] ?? '' ) );
+    update_post_meta( $order_id, 'attach_id', sanitize_text_field( $_POST['attach_id'] ?? '') );
 }
 
 
