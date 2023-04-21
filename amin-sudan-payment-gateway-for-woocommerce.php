@@ -20,7 +20,7 @@ if ( ! defined( 'MBOK_PLUGIN_DIR' ) ) {
 	define( 'MBOK_PLUGIN_DIR', dirname(__FILE__) );
 }
 
-// Make sure WooCommerce is active
+// Make sure WooCommerce is active.
 if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
     return;
 }
