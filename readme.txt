@@ -1,5 +1,5 @@
-=== Bank of Khartoum Payment Gateway for WooCommerce ===
-Contributors: aminomer
+=== Amin's Sudan Payment Gateway for WooCommerce ===
+Contributors: AminOmer
 Tags: WooCommerce, Payment, Sudan, Bank of Khartoum, mBok
 Requires at least: 5.0
 Tested up to: 5.8

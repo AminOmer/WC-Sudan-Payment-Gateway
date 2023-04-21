@@ -1,9 +1,9 @@
 <?php
 
  /**
- * Plugin Name: Bank of Khartoum Payment Gateway for WooCommerce
- * Plugin URI: https://github.com/AminOmer/mbok-payment-gateway
- * Description: This plugin enables you to add a new payment method for WooCommerce in Sudan through the Bank of Khartoum (mBok application). Users can upload a copy of the bank receipt for the Bank of Khartoum application with the transfer number to your account number (with your name, bank branch and phone number shown). A copy of the notification is uploaded to the checkout page when submitting the application, then the application is placed in a "processing" status until it is reviewed by the site's admins and the application is completed.
+ * Plugin Name: Amin's Sudan Payment Gateway for WooCommerce
+ * Plugin URI: https://github.com/AminOmer/Amin-Sudan-Payment-Gateway-for-WooCommerce
+ * Description: Amin's Sudan Payment Gateway for WooCommerce" is a payment plugin that enables customers to make payments through Sudan's Bank of Khartoum using the mBok application. Customers can upload a copy of the bank receipt with the transfer number to the checkout page, which will then be placed in a "processing" status until it is reviewed and completed by site admins. This plugin is easy to install and configure, and it provides a convenient payment solution for Sudanese businesses using WooCommerce.
  * Version: 1.0.0
  * Requires at least: 5.5
  * Requires PHP: 7.0
