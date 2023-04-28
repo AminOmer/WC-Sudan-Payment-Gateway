@@ -6,7 +6,7 @@ Tested up to: 6.2
 Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
-Plugin Logo: amin-sudan-payment-gateway-for-woocommerce.png
+Plugin Logo: wc-sudan-payment-gateway.png
 
 == Description ==
 
