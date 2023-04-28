@@ -1,0 +1,191 @@
+#mbokReceipt {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    border: solid 1px #ffffff78;
+    padding: 20px 0;
+    border-radius: 20px;
+}
+
+#mbokReceipt label {
+    display: block;
+}
+
+#mbokReceipt .form-group-trx {
+    margin-bottom: 10px;
+}
+
+#mbokReceipt .form-group.form-group-trx input {
+    width: 220px;
+    border-radius: 20px;
+    padding: 8px 15px;
+    text-align: left;
+    direction: ltr;
+    border: solid 1px #c9c9c9;
+    background-color: #fcfcfc;
+}
+
+
+#mbokReceipt .form-group.receipt-preview {
+    padding: 30px;
+}
+
+#mbokReceipt .form-group.receipt-preview img {
+    width: 100%;
+    min-width: 200px;
+    min-height: 200px;
+    margin: auto !important;
+    object-fit: cover;
+    max-width: 220px;
+    border: solid 1px #c3c3c3;
+}
+
+input#bank_payment_receipt {
+    /* Hide the default file upload button */
+    display: none;
+}
+
+#mbokReceipt label.payment-receipt-btn {
+    border: 1px solid #ccc;
+    display: inline-flex !important;
+    padding: 6px 12px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#mbokReceipt label.payment-receipt-btn i {
+    font-size: 24px;
+    margin-inline-end: 6px;
+}
+
+.payment-receipt-btn:hover {
+    background-color: #f7f7f7;
+}
+
+/* checkout bank table */
+
+table.bank-table {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+    /* box-shadow: 0 0 17px #00000045; */
+}
+
+table.bank-table td {
+    text-align: center;
+    border-radius: 39px;
+}
+
+table.bank-table td .td-inner {
+    background-color: #09527e66;
+    color: #ffffff;
+    font-size: 19px;
+    margin: 2px 5px;
+    padding: 10px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+}
+
+table.bank-table tbody td {
+    width: 50%;
+}
+
+table.bank-table tbody td .td-inner {
+    background-color: #09527e66;
+    font-size: 15px;
+    white-space: nowrap;
+    color: #ffffff;
+}
+
+table.bank-table td .td-inner.td-name {
+    justify-content: space-between;
+}
+
+table.bank-table .account-number {
+    position: relative;
+    display: inline-block;
+    border: solid 1px #ffffff36;
+    padding: 5px 30px;
+    border-radius: 25px;
+    background-color: #4b799b;
+    cursor: pointer;
+    box-shadow: 0px 2px #506b7f;
+    transition: all ease-in-out 0.15s;
+}
+
+table.bank-table .account-number span.copied {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    width: 77px;
+    height: 29px;
+    line-height: 27px;
+    margin: auto;
+    margin-right: 8px;
+    /* display: inline-block; */
+    background: #239d23;
+    border-radius: 17px;
+    color: white;
+    font-size: 12px;
+    padding: 0;
+    text-align: center;
+    box-shadow: 0 0 5px #0000002e;
+    border: solid 1px #ffffff59;
+}
+
+table.bank-table .account-number:hover {
+    background-color: #4b9b87;
+}
+
+table.bank-table .account-number:active {
+    transform: translateY(2px);
+    box-shadow: 0px 0px #506b7f;
+}
+
+.receipt-preview.loading {
+    position: relative;
+    padding-left: 2.618em;
+}
+
+.payment-receipt-btn.loading {
+    position: relative;
+    opacity: 0.25;
+    padding-left: 2.618em;
+}
+
+.receipt-preview.loading img {
+    opacity: 0.25;
+}
+
+.payment-receipt-btn.loading::after,
+.receipt-preview.loading::after {
+    font-family: WooCommerce;
+    content: "\e01c";
+    vertical-align: top;
+    font-weight: 400;
+    position: absolute;
+    color: white;
+    animation: spin 2s linear infinite;
+}
+
+.payment-receipt-btn.loading::after {
+    font-size: 20px;
+    top: calc(50% - 14px);
+    left: calc(50% - 15px);
+}
+
+.receipt-preview.loading::after {
+    font-size: 35px;
+    top: calc(50% - 30px);
+    left: calc(50% - 15px);
+}
+
+@media screen and (max-width: 800px) {
+    table.bank-table tbody td {
+        font-size: 15px;
+    }
+}

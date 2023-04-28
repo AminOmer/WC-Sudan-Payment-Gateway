@@ -1,0 +1,35 @@
+.supg-image-viewer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 50px;
+  box-sizing: border-box;
+  background-color: #00000094;
+  z-index: 999999;
+}
+
+.supg-image-viewer img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .supg-image-viewer {
+    padding: 50px 10px;
+  }
+}
+.post-type-shop_order tbody tr {
+  pointer-events: none;
+  cursor: default;
+}
+
+.post-type-shop_order tbody tr td *,
+.post-type-shop_order tbody tr th * {
+  pointer-events: all;
+  cursor: unset;
+}
