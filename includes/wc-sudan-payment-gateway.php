@@ -17,12 +17,11 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 		 */
 		public function __construct()
 		{
-			$this->domain = 'sudan_payment_gateway';
 			$this->id = 'sudan_payment_gateway';
 			$this->icon = apply_filters('woocommerce_offline_icon', '');
 			$this->has_fields = false;
-			$this->method_title = __('Bank transfer through your Bank Of Khartoum', $this->domain);
-			$this->method_description = __('Bank transfer through your Bank Of Khartoum App (mBok) and upload the receipt.', $this->domain);
+			$this->method_title = __('Bank transfer through your Bank Of Khartoum', 'wc-gateway-sudan');
+			$this->method_description = __('Bank transfer through your Bank Of Khartoum App (mBok) and upload the receipt.', 'wc-gateway-sudan');
 
 			// Load the settings.
 			$this->init_form_fields();
@@ -68,45 +67,45 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				array(
 
 					'enabled' => array(
-						'title' => __('Enable/Disable', $this->domain),
+						'title' => __('Enable/Disable', 'wc-gateway-sudan'),
 						'type' => 'checkbox',
-						'label' => __('Enable Payment', $this->domain),
+						'label' => __('Enable Payment', 'wc-gateway-sudan'),
 						'default' => 'yes'
 					),
 
 					'title' => array(
-						'title' => __('Title', $this->domain),
+						'title' => __('Title', 'wc-gateway-sudan'),
 						'type' => 'text',
-						'description' => __('This controls the title for the payment method the customer sees during checkout.', $this->domain),
-						'default' => __('Sudan Payment Gatway', $this->domain),
+						'description' => __('This controls the title for the payment method the customer sees during checkout.', 'wc-gateway-sudan'),
+						'default' => __('Sudan Payment Gatway', 'wc-gateway-sudan'),
 						'desc_tip' => true,
 					),
 
 					'description' => array(
-						'title' => __('Description', $this->domain),
+						'title' => __('Description', 'wc-gateway-sudan'),
 						'type' => 'textarea',
-						'description' => __('Payment method description that the customer will see on your checkout.', $this->domain),
-						'default' => __('Pay through your bank to the account (or one of the accounts) shown below, then send us a copy of the transfer invoice to be verified by our team, then confirm the order', $this->domain),
+						'description' => __('Payment method description that the customer will see on your checkout.', 'wc-gateway-sudan'),
+						'default' => __('Pay through your bank to the account (or one of the accounts) shown below, then send us a copy of the transfer invoice to be verified by our team, then confirm the order', 'wc-gateway-sudan'),
 						'desc_tip' => true,
 					),
 
 					'require_trx' => array(
-						'title' => __('Require TRX?', $this->domain),
+						'title' => __('Require TRX?', 'wc-gateway-sudan'),
 						'type' => 'checkbox',
-						'label' => __('Transaction ID', $this->domain),
+						'label' => __('Transaction ID', 'wc-gateway-sudan'),
 						'default' => 'no'
 					),
 
 					'instructions' => array(
-						'title' => __('Instructions', $this->domain),
+						'title' => __('Instructions', 'wc-gateway-sudan'),
 						'type' => 'textarea',
-						'description' => __('Instructions', $this->domain),
+						'description' => __('Instructions', 'wc-gateway-sudan'),
 						'default' => '',
 						'desc_tip' => true,
 					),
 
 					'account_details' => array(
-						'type' => __('account_details', $this->domain),
+						'type' => __('account_details', 'wc-gateway-sudan'),
 					),
 				)
 			);
@@ -164,7 +163,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 			?>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
-					<?php esc_html_e('Account details:', $this->domain); ?>
+					<?php esc_html_e('Account details:', 'wc-gateway-sudan'); ?>
 				</th>
 				<td class="forminp" id="bacs_accounts">
 					<div class="wc_input_table_wrapper">
@@ -173,16 +172,16 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 								<tr>
 									<th class="sort">&nbsp;</th>
 									<th>
-										<?php esc_html_e('Account name', $this->domain); ?>
+										<?php esc_html_e('Account name', 'wc-gateway-sudan'); ?>
 									</th>
 									<th>
-										<?php esc_html_e('Account number', $this->domain); ?>
+										<?php esc_html_e('Account number', 'wc-gateway-sudan'); ?>
 									</th>
 									<th>
-										<?php esc_html_e('Bank Branch', $this->domain); ?>
+										<?php esc_html_e('Bank Branch', 'wc-gateway-sudan'); ?>
 									</th>
 									<th>
-										<?php esc_html_e('Phone Number', $this->domain); ?>
+										<?php esc_html_e('Phone Number', 'wc-gateway-sudan'); ?>
 									</th>
 								</tr>
 							</thead>
@@ -195,10 +194,10 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 									?>
 									<tr class="account">
 										<td class="sort"></td>
-										<td><input type="text" value="<?=esc_attr(wp_unslash($account['account_name']));?>" name="bacs_account_name[<?=esc_attr($i);?>]" /></td>
-										<td><input type="text" value="<?=esc_attr($account['account_number']);?>" name="bacs_account_number[<?=esc_attr($i);?>]" /></td>
-										<td><input type="text" value="<?=esc_attr(wp_unslash($account['bank_branch']));?>" name="bacs_bank_branch[<?=esc_attr($i);?>]" /></td>
-										<td><input type="text" value="<?=esc_attr($account['phone_number']);?>" name="bacs_phone_number[<?=esc_attr($i);?>]" /></td>
+										<td><input type="text" value="<?php echo esc_attr(wp_unslash($account['account_name']));?>" name="bacs_account_name[<?php echo esc_attr($i);?>]" /></td>
+										<td><input type="text" value="<?php echo esc_attr($account['account_number']);?>" name="bacs_account_number[<?php echo esc_attr($i);?>]" /></td>
+										<td><input type="text" value="<?php echo esc_attr(wp_unslash($account['bank_branch']));?>" name="bacs_bank_branch[<?php echo esc_attr($i);?>]" /></td>
+										<td><input type="text" value="<?php echo esc_attr($account['phone_number']);?>" name="bacs_phone_number[<?php echo esc_attr($i);?>]" /></td>
 									</tr>
 								<?php
 									}
@@ -208,9 +207,9 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 							<tfoot>
 								<tr>
 									<th colspan="7"><a href="#" class="add button">
-											<?php esc_html_e('+ Add account', $this->domain); ?>
+											<?php esc_html_e('+ Add account', 'wc-gateway-sudan'); ?>
 										</a> <a href="#" class="remove_rows button">
-											<?php esc_html_e('Remove selected account(s)', $this->domain); ?>
+											<?php esc_html_e('Remove selected account(s)', 'wc-gateway-sudan'); ?>
 										</a></th>
 								</tr>
 							</tfoot>
@@ -279,12 +278,12 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 									<td colspan="2">
 										<div class="td-inner td-name">
 											<div>
-												<?php echo esc_html__($account_name); ?>
+												<?php echo esc_html($account_name); ?>
 											</div>
 											<div>
 												<div class="account-number"><span class="copy">
-														<?php echo esc_html__($account_number); ?>
-													</span><span class="copied"><?php echo _e('copied', $this->domain)?></span></div>
+														<?php echo esc_html($account_number); ?>
+													</span><span class="copied"><?php echo _e('copied', 'wc-gateway-sudan')?></span></div>
 											</div>
 										</div>
 									</td>
@@ -295,14 +294,14 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 									<td>
 										<div>
 											<div class="td-inner">
-												<?php echo esc_html__($bank_branch); ?>
+												<?php echo esc_html($bank_branch); ?>
 											</div>
 										</div>
 									</td>
 									<td>
 										<div>
 											<div class="td-inner">
-												<?php echo esc_html__($phone_number); ?>
+												<?php echo esc_html($phone_number); ?>
 											</div>
 										</div>
 									</td>
@@ -332,7 +331,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				<?php if ($this->require_trx == 'yes'): ?>
 					<div class="form-group form-group-trx">
 						<label for="bank_payment_trx" class="">
-							<?php _e('Enter the bank payment TRX', $this->domain); ?>
+							<?php _e('Enter the bank payment TRX', 'wc-gateway-sudan'); ?>
 						</label>
 						<input type="text" name="bank_payment_trx" class="bank_payment_trx" required>
 					</div>
@@ -340,7 +339,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				<?php endif; ?>
 				<div class="form-group">
 					<label for="bank_payment_receipt" class="payment-receipt-btn"><i class="fa-solid fa-upload"></i>
-						<?php _e('Upload mBok Receipt Image', $this->domain); ?>
+						<?php _e('Upload mBok Receipt Image', 'wc-gateway-sudan'); ?>
 					</label>
 					<input type="file" id="bank_payment_receipt"
 						onclick="this.value=null;document.getElementById('receiptPreview').src = ''"
@@ -362,7 +361,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				(!is_numeric($_POST['attach_id'])) ||
 				(($this->require_trx == 'yes') && (!isset($_POST['bank_payment_trx']) || empty($_POST['bank_payment_trx'])))
 			) {
-				wc_add_notice(__('<strong>mBok</strong> Please insert Receipt Image and TRX number correctly'), 'error');
+				wc_add_notice(__('<strong>mBok</strong> Please insert Receipt Image and TRX number correctly', 'wc-gateway-sudan'), 'error');
 				return false;
 			}
 			return true;
@@ -404,7 +403,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 			$order = wc_get_order($order_id);
 
 			// Mark as processing (we're Processing the payment)
-			$order->update_status('processing', __('Processing Payment Confirmation', $this->domain));
+			$order->update_status('processing', __('Processing Payment Confirmation', 'wc-gateway-sudan'));
 
 			// Reduce stock levels
 			$order->reduce_order_stock();
