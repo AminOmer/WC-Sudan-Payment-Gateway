@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Sudan Payment Gateway for WooCommerce by Amin Omer
- * Plugin URI: https://github.com/AminOmer/Amin-Sudan-Payment-Gateway-for-WooCommerce
+ * Plugin URI: https://github.com/AminOmer/WC-Sudan-Payment-Gateway
  * Description: Sudan Payment Gateway for WooCommerce by Amin Omer" is a payment plugin that enables customers to make payments through Sudan's Bank of Khartoum using the mBok application. Customers can upload a copy of the bank receipt with the transfer number to the checkout page, which will then be placed in a "processing" status until it is reviewed and completed by site admins. This plugin is easy to install and configure, and it provides a convenient payment solution for Sudanese businesses using WooCommerce.
  * Version: 1.0.0
  * Requires at least: 5.5
@@ -31,10 +31,10 @@ if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get
 }
 
 // load "Sudan Payment Gateway" plugin
-if (!function_exists('sugp_plugin_init')) {
-    function sugp_plugin_init()
+if (!function_exists('supg_plugin_init')) {
+    function supg_plugin_init()
     {
         require_once(SUPG_PLUGIN_DIR . '/includes/class-plugin-core.php');
     }
 }
-add_action('plugins_loaded', 'sugp_plugin_init', 11);
+add_action('plugins_loaded', 'supg_plugin_init', 11);
