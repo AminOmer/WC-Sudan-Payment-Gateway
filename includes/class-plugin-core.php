@@ -33,6 +33,9 @@ if (!class_exists('SUPG_Plugin')) {
             // Admin orders tabel in woocommerce
             add_filter('manage_edit-shop_order_columns', array($this, 'orders_posts_add_columns'), 20);
             add_action('manage_shop_order_posts_custom_column', array($this, 'orders_posts_column_content'));
+
+            // all plugin settings link
+            add_filter('plugin_action_links', array($this, 'add_plugin_settings_link'), 10, 2);
         }
 
         function wc_add_gateways($gateways)
@@ -188,16 +191,15 @@ if (!class_exists('SUPG_Plugin')) {
             }
         }
 
+        function add_plugin_settings_link($links, $file) {
+            if ($file == plugin_basename(__FILE__)) {
+                // This is your own plugin, so don't modify the links
+                return $links;
+            }
+            $settings_link = '<a href="' . esc_url(admin_url('admin.php?page=wc-settings&tab=checkout&section=sudan_payment_gateway')) . '">' . __('Settings') . '</a>';
+            array_unshift($links, $settings_link);
+            return $links;
+        }        
     }
     new SUPG_Plugin;
 }
-
-
-
-            // // do woocommerce ajax
-            // add_action('wp_ajax_invoice_response', 'save_receipt_image');
-            // add_action('wp_ajax_nopriv_invoice_response', 'save_receipt_image');
-
-            // function save_receipt_image(){
-            //     echo 'aaa';exit;
-            // }
