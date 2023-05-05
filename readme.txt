@@ -62,7 +62,7 @@ Initial release.
 = 1.0.1 =
 
 * Arabic language added.
-now the plugn available in Arabic language.
+Now the plugn available in Arabic language.
 
 == Upgrade Notice ==
 
