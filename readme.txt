@@ -3,7 +3,7 @@ Contributors: AminOmer
 Tags: WooCommerce, Payment, Sudan, Bank of Khartoum, mBok
 Requires at least: 5.0
 Tested up to: 6.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Plugin Logo: wc-sudan-payment-gateway.png
@@ -59,7 +59,7 @@ A: Just WooCommerce.
 * Plugin now available in Arabic language.
 Initial release.
 
-= 1.0.1 =
+= 1.1.0 =
 
 * Arabic language added.
 Now the plugn available in Arabic language.
