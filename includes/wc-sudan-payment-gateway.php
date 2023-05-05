@@ -20,8 +20,8 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 			$this->id = 'sudan_payment_gateway';
 			$this->icon = apply_filters('woocommerce_offline_icon', '');
 			$this->has_fields = false;
-			$this->method_title = __('Bank transfer through your Bank Of Khartoum', 'wc-gateway-sudan');
-			$this->method_description = __('Bank transfer through your Bank Of Khartoum App (mBok) and upload the receipt.', 'wc-gateway-sudan');
+			$this->method_title = __('Sudan Payment Gateway', 'wc-sudan-gateway');
+			$this->method_description = __('Bank transfer through Sudanese Banks and upload the receipt.', 'wc-sudan-gateway');
 
 			// Load the settings.
 			$this->init_form_fields();
@@ -32,10 +32,10 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 			$this->description = $this->get_option('description');
 			$this->instructions = $this->get_option('instructions');
 			$this->require_trx = $this->get_option('require_trx');
-
+			
 			// BACS account fields shown on the checkout page and in admin configuration tab.
 			$this->account_details = get_option(
-				'woocommerce_bacs_accountss',
+				'woocommerce_bacs_accounts',
 				array(
 					array(
 						'account_name' => $this->get_option('account_name'),
@@ -67,45 +67,44 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				array(
 
 					'enabled' => array(
-						'title' => __('Enable/Disable', 'wc-gateway-sudan'),
+						'title' => __('Enable/Disable', 'wc-sudan-gateway'),
 						'type' => 'checkbox',
-						'label' => __('Enable Payment', 'wc-gateway-sudan'),
+						'label' => __('Enable Payment', 'wc-sudan-gateway'),
 						'default' => 'yes'
 					),
 
 					'title' => array(
-						'title' => __('Title', 'wc-gateway-sudan'),
+						'title' => __('Title', 'wc-sudan-gateway'),
 						'type' => 'text',
-						'description' => __('This controls the title for the payment method the customer sees during checkout.', 'wc-gateway-sudan'),
-						'default' => __('Sudan Payment Gatway', 'wc-gateway-sudan'),
+						'description' => __('This controls the title for the payment method the customer sees during checkout.', 'wc-sudan-gateway'),
+						'default' => __('Pay with your Sudanese banks', 'wc-sudan-gateway'),
 						'desc_tip' => true,
 					),
 
 					'description' => array(
-						'title' => __('Description', 'wc-gateway-sudan'),
+						'title' => __('Description', 'wc-sudan-gateway'),
 						'type' => 'textarea',
-						'description' => __('Payment method description that the customer will see on your checkout.', 'wc-gateway-sudan'),
-						'default' => __('Pay through your bank to the account (or one of the accounts) shown below, then send us a copy of the transfer invoice to be verified by our team, then confirm the order', 'wc-gateway-sudan'),
+						'description' => __('Payment method description that the customer will see on your checkout.', 'wc-sudan-gateway'),
+						'default' => __('Pay through your bank to the account (or one of the accounts) shown below, then send us a copy of the transfer invoice to be verified by our team', 'wc-sudan-gateway'),
 						'desc_tip' => true,
 					),
 
 					'require_trx' => array(
-						'title' => __('Require TRX?', 'wc-gateway-sudan'),
+						'title' => __('Require Transaction ID TRX?', 'wc-sudan-gateway'),
 						'type' => 'checkbox',
-						'label' => __('Transaction ID', 'wc-gateway-sudan'),
+						'label' => __('Require Transaction ID TRX?', 'wc-sudan-gateway'),
 						'default' => 'no'
 					),
 
 					'instructions' => array(
-						'title' => __('Instructions', 'wc-gateway-sudan'),
+						'title' => __('Instructions', 'wc-sudan-gateway'),
 						'type' => 'textarea',
-						'description' => __('Instructions', 'wc-gateway-sudan'),
 						'default' => '',
 						'desc_tip' => true,
 					),
 
 					'account_details' => array(
-						'type' => __('account_details', 'wc-gateway-sudan'),
+						'type' => 'account_details',
 					),
 				)
 			);
@@ -144,7 +143,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				}
 			}
 
-			update_option('woocommerce_bacs_accountss', $accounts);
+			update_option('woocommerce_bacs_accounts', $accounts);
 		}
 
 		/**
@@ -163,7 +162,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 			?>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
-					<?php esc_html_e('Account details:', 'wc-gateway-sudan'); ?>
+					<?php esc_html_e('Accounts details', 'wc-sudan-gateway'); ?>
 				</th>
 				<td class="forminp" id="bacs_accounts">
 					<div class="wc_input_table_wrapper">
@@ -172,16 +171,16 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 								<tr>
 									<th class="sort">&nbsp;</th>
 									<th>
-										<?php esc_html_e('Account name', 'wc-gateway-sudan'); ?>
+										<?php esc_html_e('Account name', 'wc-sudan-gateway'); ?>
 									</th>
 									<th>
-										<?php esc_html_e('Account number', 'wc-gateway-sudan'); ?>
+										<?php esc_html_e('Account number', 'wc-sudan-gateway'); ?>
 									</th>
 									<th>
-										<?php esc_html_e('Bank Branch', 'wc-gateway-sudan'); ?>
+										<?php esc_html_e('Bank Branch', 'wc-sudan-gateway'); ?>
 									</th>
 									<th>
-										<?php esc_html_e('Phone Number', 'wc-gateway-sudan'); ?>
+										<?php esc_html_e('Phone Number', 'wc-sudan-gateway'); ?>
 									</th>
 								</tr>
 							</thead>
@@ -207,9 +206,9 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 							<tfoot>
 								<tr>
 									<th colspan="7"><a href="#" class="add button">
-											<?php esc_html_e('+ Add account', 'wc-gateway-sudan'); ?>
+											<?php esc_html_e('+ Add account', 'wc-sudan-gateway'); ?>
 										</a> <a href="#" class="remove_rows button">
-											<?php esc_html_e('Remove selected account(s)', 'wc-gateway-sudan'); ?>
+											<?php esc_html_e('Remove selected account(s)', 'wc-sudan-gateway'); ?>
 										</a></th>
 								</tr>
 							</tfoot>
@@ -255,14 +254,11 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 			// Get order and store in $order.
 			$order = wc_get_order($order_id);
 
-			$bacs_accounts = apply_filters('woocommerce_bacs_accountss', $this->account_details);
+			$bacs_accounts = apply_filters('woocommerce_bacs_accounts', $this->account_details);
 
 			if (!empty($bacs_accounts)) {
 				?>
 				<section class="woocommerce-bacs-bank-details">
-					<h2 class="wc-bacs-bank-details-heading">
-						<?php echo esc_html__('Our bank details', 'woocommerce'); ?>
-					</h2>
 					<?php
 					foreach ($bacs_accounts as $bacs_account) {
 
@@ -283,7 +279,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 											<div>
 												<div class="account-number"><span class="copy">
 														<?php echo esc_html($account_number); ?>
-													</span><span class="copied"><?php echo _e('copied', 'wc-gateway-sudan')?></span></div>
+													</span><span class="copied"><?php echo _e('copied', 'wc-sudan-gateway')?></span></div>
 											</div>
 										</div>
 									</td>
@@ -331,7 +327,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				<?php if ($this->require_trx == 'yes'): ?>
 					<div class="form-group form-group-trx">
 						<label for="bank_payment_trx" class="">
-							<?php _e('Enter the bank payment TRX', 'wc-gateway-sudan'); ?>
+							<?php _e('Enter the bank payment TRX', 'wc-sudan-gateway'); ?>
 						</label>
 						<input type="text" name="bank_payment_trx" class="bank_payment_trx" required>
 					</div>
@@ -339,7 +335,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				<?php endif; ?>
 				<div class="form-group">
 					<label for="bank_payment_receipt" class="payment-receipt-btn"><i class="fa-solid fa-upload"></i>
-						<?php _e('Upload mBok Receipt Image', 'wc-gateway-sudan'); ?>
+						<?php _e('Upload the receipt image', 'wc-sudan-gateway'); ?>
 					</label>
 					<input type="file" id="bank_payment_receipt"
 						onclick="this.value=null;document.getElementById('receiptPreview').src = ''"
@@ -361,7 +357,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				(!is_numeric($_POST['attach_id'])) ||
 				(($this->require_trx == 'yes') && (!isset($_POST['bank_payment_trx']) || empty($_POST['bank_payment_trx'])))
 			) {
-				wc_add_notice(__('<strong>mBok</strong> Please insert Receipt Image and TRX number correctly', 'wc-gateway-sudan'), 'error');
+				wc_add_notice(__('<strong>mBok</strong> Please insert Receipt Image and TRX number correctly', 'wc-sudan-gateway'), 'error');
 				return false;
 			}
 			return true;
@@ -403,7 +399,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 			$order = wc_get_order($order_id);
 
 			// Mark as processing (we're Processing the payment)
-			$order->update_status('processing', __('Processing Payment Confirmation', 'wc-gateway-sudan'));
+			$order->update_status('processing', __('Processing Payment Confirmation', 'wc-sudan-gateway'));
 
 			// Reduce stock levels
 			$order->reduce_order_stock();

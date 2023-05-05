@@ -1,4 +1,4 @@
-=== Sudan Payment Gateway for WooCommerce by Amin Omer ===
+=== Sudan Payment Gateway for WooCommerce ===
 Contributors: AminOmer
 Tags: WooCommerce, Payment, Sudan, Bank of Khartoum, mBok
 Requires at least: 5.0
@@ -10,7 +10,7 @@ Plugin Logo: wc-sudan-payment-gateway.png
 
 == Description ==
 
-Sudan Payment Gateway for WooCommerce by Amin Omer" is a payment plugin that enables customers to make payments through Sudan's Bank of Khartoum using the mBok application. Customers can upload a copy of the bank receipt with the transfer number to the checkout page, which will then be placed in a "processing" status until it is reviewed and completed by site admins. This plugin is easy to install and configure, and it provides a convenient payment solution for Sudanese businesses using WooCommerce.
+Sudan Payment Gateway for WooCommerce is a payment plugin that enables customers to make payments through Sudan's Bank of Khartoum using the mBok application. Customers can upload a copy of the bank receipt with the transfer number to the checkout page, which will then be placed in a "processing" status until it is reviewed and completed by site admins. This plugin is easy to install and configure, and it provides a convenient payment solution for Sudanese businesses using WooCommerce.
 
 == Installation ==
 
@@ -23,7 +23,7 @@ Sudan Payment Gateway for WooCommerce by Amin Omer" is a payment plugin that ena
 == Frequently Asked Questions ==
 
 Q: How do I install this plugin?
-A: You can install this plugin by downloading the plugin zip file from the WordPress plugin repository and uploading it to your WordPress site. Alternatively, you can install it directly from the WordPress plugin repository by searching for "Sudan Payment Gateway for WooCommerce by Amin Omer" in the Plugins section of your WordPress dashboard.
+A: You can install this plugin by downloading the plugin zip file from the WordPress plugin repository and uploading it to your WordPress site. Alternatively, you can install it directly from the WordPress plugin repository by searching for "Sudan Payment Gateway for WooCommerce" in the Plugins section of your WordPress dashboard.
 
 Q: How do I enable the Bank of Khartoum (mBok) payment method in WooCommerce?
 A: After activating the plugin, go to the WooCommerce Settings page and click on the Payments tab. You should see the Bank of Khartoum (mBok) payment method listed there. Click on it to enable it.
@@ -55,9 +55,15 @@ A: Just WooCommerce.
 == Changelog ==
 
 = 1.0.0 =
-* Plugin released.
 
+* Plugin now available in Arabic language.
 Initial release.
+
+= 1.0.1 =
+
+* Arabic language added.
+now the plugn available in Arabic language.
+
 == Upgrade Notice ==
 
 There are no specific upgrade instructions for this plugin.

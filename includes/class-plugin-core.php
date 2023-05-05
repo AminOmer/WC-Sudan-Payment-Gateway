@@ -52,7 +52,7 @@ if (!class_exists('SUPG_Plugin')) {
         {
 
             $plugin_links = array(
-                '<a href="' . admin_url('admin.php?page=wc-settings&tab=checkout&section=sudan_payment_gateway') . '">' . __('Configure', 'wc-gateway-sudan') . '</a>'
+                '<a href="' . admin_url('admin.php?page=wc-settings&tab=checkout&section=sudan_payment_gateway') . '">' . __('Configure', 'wc-sudan-gateway') . '</a>'
             );
 
             return array_merge($plugin_links, $links);
@@ -86,8 +86,6 @@ if (!class_exists('SUPG_Plugin')) {
                 exit;
             }
 
-            
-
             // Check if file is an image again (using image size)
             $file_info = getimagesize($file['tmp_name']);
             if ($file_info === false) {
@@ -95,7 +93,6 @@ if (!class_exists('SUPG_Plugin')) {
                 echo 'Error: File is not an image.';
                 exit;
             }
-
 
             // Set the file name and move the file to the receipt directory
             $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -130,7 +127,6 @@ if (!class_exists('SUPG_Plugin')) {
             update_post_meta($order_id, 'attach_id', sanitize_text_field($_POST['attach_id'] ?? ''));
         }
 
-
         function custom_checkout_field_display_admin_order_meta($order)
         {
             $method = get_post_meta($order->id, '_payment_method', true);
@@ -140,8 +136,8 @@ if (!class_exists('SUPG_Plugin')) {
             $attach_id = get_post_meta($order->id, 'attach_id', true);
             $trx_number = get_post_meta($order->id, 'trx_number', true);
             $src = wp_get_attachment_url($attach_id, 'full');
-            echo '<p><strong>' . __('mBok Payment Receipt', 'wc-gateway-sudan') . ':</strong> <a class="supg-image-popup" href="javascript:void(0);"><img src="' . $src . '" height="50"/></a></p>';
-            echo '<p><strong>' . __('Receipt TRX', 'wc-gateway-sudan') . ':</strong> ' . $trx_number . '</p>';
+            echo '<p><strong>' . __('mBok Payment Receipt', 'wc-sudan-gateway') . ':</strong> <a class="supg-image-popup" href="javascript:void(0);"><img src="' . $src . '" height="50"/></a></p>';
+            echo '<p><strong>' . __('Receipt TRX', 'wc-sudan-gateway') . ':</strong> ' . $trx_number . '</p>';
         }
 
         function orders_posts_add_columns($columns)
@@ -150,8 +146,8 @@ if (!class_exists('SUPG_Plugin')) {
             foreach ($columns as $column_name => $column_info) {
                 $new_columns[$column_name] = $column_info;
                 if ('order_total' === $column_name) {
-                    $new_columns['trx_number'] = __('Trx', 'wc-gateway-sudan');
-                    $new_columns['receipt_image'] = __('Receipt', 'wc-gateway-sudan');
+                    $new_columns['trx_number'] = __('Trx', 'wc-sudan-gateway');
+                    $new_columns['receipt_image'] = __('Receipt', 'wc-sudan-gateway');
                 }
             }
             return $new_columns;
