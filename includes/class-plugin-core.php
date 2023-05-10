@@ -136,7 +136,7 @@ if (!class_exists('SUPG_Plugin')) {
             $attach_id = get_post_meta($order->id, 'attach_id', true);
             $trx_number = get_post_meta($order->id, 'trx_number', true);
             $src = wp_get_attachment_url($attach_id, 'full');
-            echo '<p><strong>' . __('mBok Payment Receipt', 'wc-sudan-gateway') . ':</strong> <a class="supg-image-popup" href="javascript:void(0);"><img src="' . $src . '" height="50"/></a></p>';
+            echo '<p><strong>' . __('Payment Receipt', 'wc-sudan-gateway') . ':</strong> <a class="supg-image-popup" href="javascript:void(0);"><img src="' . $src . '" height="50"/></a></p>';
             echo '<p><strong>' . __('Receipt TRX', 'wc-sudan-gateway') . ':</strong> ' . $trx_number . '</p>';
         }
 

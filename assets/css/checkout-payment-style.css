@@ -1,21 +1,23 @@
-#mbokReceipt {
-    max-width: 500px;
-    margin: auto;
+#supgReceipt {
     text-align: center;
-    border: solid 1px #ffffff78;
-    padding: 20px 0;
-    border-radius: 20px;
+    padding: 20px 0 30px 0;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+    background-color: #e4e2e4;
+    border-radius: 10px;
+    border: solid 3px #ffffff78;
+    box-shadow: 1px 6px 31px #00000012;
 }
 
-#mbokReceipt label {
+#supgReceipt label {
     display: block;
 }
 
-#mbokReceipt .form-group-trx {
+#supgReceipt .form-group-trx {
     margin-bottom: 10px;
 }
 
-#mbokReceipt .form-group.form-group-trx input {
+#supgReceipt .form-group.form-group-trx input {
     width: 220px;
     border-radius: 20px;
     padding: 8px 15px;
@@ -26,14 +28,13 @@
 }
 
 
-#mbokReceipt .form-group.receipt-preview {
-    padding: 30px;
+#supgReceipt .form-group.receipt-preview {
+    padding: 20px;
 }
 
-#mbokReceipt .form-group.receipt-preview img {
+#supgReceipt .form-group.receipt-preview img {
     width: 100%;
-    min-width: 200px;
-    min-height: 200px;
+    min-height: 250px;
     margin: auto !important;
     object-fit: cover;
     max-width: 220px;
@@ -45,7 +46,7 @@ input#bank_payment_receipt {
     display: none;
 }
 
-#mbokReceipt label.payment-receipt-btn {
+#supgReceipt label.payment-receipt-btn {
     border: 1px solid #ccc;
     display: inline-flex !important;
     padding: 6px 12px;
@@ -54,7 +55,7 @@ input#bank_payment_receipt {
     justify-content: space-between;
 }
 
-#mbokReceipt label.payment-receipt-btn i {
+#supgReceipt label.payment-receipt-btn i {
     font-size: 24px;
     margin-inline-end: 6px;
 }
@@ -63,87 +64,99 @@ input#bank_payment_receipt {
     background-color: #f7f7f7;
 }
 
-/* checkout bank table */
+/* checkout bank accounts */
 
-table.bank-table {
-    width: 100%;
+.bank-accounts{
+    margin: 0 -5px;
+}
+
+.bank-account {
     max-width: 500px;
-    margin: 30px auto;
-    /* box-shadow: 0 0 17px #00000045; */
+    margin: 0 auto 20px auto;
+    background-color: #fcfcfc5e;
+    border-radius: 10px;
+    border: 0;
+    box-shadow: 1px 6px 31px #00000014;
 }
 
-table.bank-table td {
-    text-align: center;
-    border-radius: 39px;
-}
-
-table.bank-table td .td-inner {
-    background-color: #09527e66;
-    color: #ffffff;
-    font-size: 19px;
-    margin: 2px 5px;
-    padding: 10px;
-    border-radius: 16px;
+.account-body {
     display: flex;
     align-items: center;
-}
-
-table.bank-table tbody td {
-    width: 50%;
-}
-
-table.bank-table tbody td .td-inner {
-    background-color: #09527e66;
-    font-size: 15px;
-    white-space: nowrap;
-    color: #ffffff;
-}
-
-table.bank-table td .td-inner.td-name {
     justify-content: space-between;
+    padding: 25px 10px;
 }
 
-table.bank-table .account-number {
+.account-name {
+    font-weight: bold;
+}
+
+a.account-number-btn {
     position: relative;
-    display: inline-block;
-    border: solid 1px #ffffff36;
-    padding: 5px 30px;
-    border-radius: 25px;
-    background-color: #4b799b;
-    cursor: pointer;
-    box-shadow: 0px 2px #506b7f;
-    transition: all ease-in-out 0.15s;
 }
 
-table.bank-table .account-number span.copied {
+span.copy {
+    display: block;
+    padding: 5px 10px;
+    background-color: #8076ae;
+    border-bottom: solid 1px;
+    border-color: #ffffff47;
+    color: #ececec;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: normal;
+    box-shadow: 0 2px 0 #63598f;
+    margin-inline-start: 5px;
+    transition: all ease-in-out 0.3s;
+}
+
+span.copy:hover {
+    background-color: #606079;
+}
+span.copy:active{
+    background-color: #606079;
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+span.copied {
     display: none;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 100%;
-    width: 77px;
-    height: 29px;
-    line-height: 27px;
+    top: -35px;
+    left: 0;
+    right: 0;
     margin: auto;
-    margin-right: 8px;
-    /* display: inline-block; */
-    background: #239d23;
-    border-radius: 17px;
-    color: white;
-    font-size: 12px;
-    padding: 0;
-    text-align: center;
-    box-shadow: 0 0 5px #0000002e;
-    border: solid 1px #ffffff59;
+    width: fit-content;
+    background-color: #000000ed;
+    color: #ffffffeb;
+    padding: 2px 8px;
+    font-size: 13px;
+    border-radius: 7px;
 }
 
-table.bank-table .account-number:hover {
-    background-color: #4b9b87;
+.account-head,
+.account-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    font-size: 14px;
 }
 
-table.bank-table .account-number:active {
-    transform: translateY(2px);
-    box-shadow: 0px 0px #506b7f;
+.account-footer {
+    border-top: solid 1px #ededed;
+}
+
+.account-head{
+    border-bottom: solid 1px #ededed;
+}
+
+@media screen and (max-width: 800px) {
+    .account-body {
+        padding: 20px 10px;
+    }
+}
+
+.receipt-preview{
+    display: none;
 }
 
 .receipt-preview.loading {

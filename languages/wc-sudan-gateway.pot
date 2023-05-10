@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sudan Payment Gateway for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-05 14:17+0000\n"
+"POT-Creation-Date: 2023-05-06 14:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,24 +16,29 @@ msgstr ""
 "X-Loco-Version: 2.6.4; wp-6.2\n"
 "X-Domain: wc-sudan-gateway"
 
-#: includes/wc-sudan-payment-gateway.php:209
+#: includes/wc-sudan-payment-gateway.php:230
 msgid "+ Add account"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:363
+#: includes/wc-sudan-payment-gateway.php:415
 msgid ""
-"<strong>mBok</strong> Please insert Receipt Image and TRX number correctly"
-msgstr ""
-
-#: includes/wc-sudan-payment-gateway.php:174
-msgid "Account name"
+"<strong>Sudan Payment Gateway</strong> Please insert Receipt Image and TRX "
+"number correctly"
 msgstr ""
 
 #: includes/wc-sudan-payment-gateway.php:177
+msgid "Account name"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:183
 msgid "Account number"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:165
+#: includes/wc-sudan-payment-gateway.php:180
+msgid "Account type"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:168
 msgid "Accounts details"
 msgstr ""
 
@@ -41,7 +46,7 @@ msgstr ""
 msgid "Amin Omer"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:180
+#: includes/wc-sudan-payment-gateway.php:186
 msgid "Bank Branch"
 msgstr ""
 
@@ -49,28 +54,51 @@ msgstr ""
 msgid "Bank transfer through Sudanese Banks and upload the receipt."
 msgstr ""
 
+#: includes/wc-sudan-payment-gateway.php:209
+#: includes/wc-sudan-payment-gateway.php:251
+msgid "Bankak"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:315
+msgid "Bankak transfer"
+msgstr ""
+
 #: includes/class-plugin-core.php:55
 msgid "Configure"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:285
+#: includes/wc-sudan-payment-gateway.php:348
 msgid "copied"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:85
+#: includes/wc-sudan-payment-gateway.php:215
+#: includes/wc-sudan-payment-gateway.php:257
+msgid "Custom Bank"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:86
 msgid "Description"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:72
+#: includes/wc-sudan-payment-gateway.php:73
 msgid "Enable Payment"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:70
+#: includes/wc-sudan-payment-gateway.php:71
 msgid "Enable/Disable"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:333
+#: includes/wc-sudan-payment-gateway.php:385
 msgid "Enter the bank payment TRX"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:211
+#: includes/wc-sudan-payment-gateway.php:253
+msgid "Fawri"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:323
+msgid "Fawri transfer"
 msgstr ""
 
 #. Author URI of the plugin
@@ -81,37 +109,51 @@ msgstr ""
 msgid "https://github.com/AminOmer/WC-Sudan-Payment-Gateway"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:100
+#: includes/wc-sudan-payment-gateway.php:101
 msgid "Instructions"
 msgstr ""
 
-#: includes/class-plugin-core.php:139
-msgid "mBok Payment Receipt"
+#: includes/wc-sudan-payment-gateway.php:214
+#: includes/wc-sudan-payment-gateway.php:256
+msgid "MTN"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:263
-msgid "Our bank details"
+#: includes/wc-sudan-payment-gateway.php:335
+msgid "MTN balance transfer"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:88
+#: includes/wc-sudan-payment-gateway.php:210
+#: includes/wc-sudan-payment-gateway.php:252
+msgid "O-Cash"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:319
+msgid "O-Cash transfer"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:89
 msgid ""
 "Pay through your bank to the account (or one of the accounts) shown below, "
 "then send us a copy of the transfer invoice to be verified by our team"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:80
+#: includes/wc-sudan-payment-gateway.php:81
 msgid "Pay with your Sudanese banks"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:87
+#: includes/wc-sudan-payment-gateway.php:88
 msgid "Payment method description that the customer will see on your checkout."
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:183
+#: includes/class-plugin-core.php:139
+msgid "Payment Receipt"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:189
 msgid "Phone Number"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:405
+#: includes/wc-sudan-payment-gateway.php:457
 msgid "Processing Payment Confirmation"
 msgstr ""
 
@@ -123,12 +165,12 @@ msgstr ""
 msgid "Receipt TRX"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:211
+#: includes/wc-sudan-payment-gateway.php:232
 msgid "Remove selected account(s)"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:93
-#: includes/wc-sudan-payment-gateway.php:95
+#: includes/wc-sudan-payment-gateway.php:94
+#: includes/wc-sudan-payment-gateway.php:96
 msgid "Require Transaction ID TRX?"
 msgstr ""
 
@@ -143,21 +185,30 @@ msgstr ""
 #. Description of the plugin
 msgid ""
 "Sudan Payment Gateway for WooCommerce is a payment plugin that enables "
-"customers to make payments through Sudan's Bank of Khartoum using the mBok "
-"application. Customers can upload a copy of the bank receipt with the "
-"transfer number to the checkout page, which will then be placed in a "
-"\"processing\" status until it is reviewed and completed by site admins. "
-"This plugin is easy to install and configure, and it provides a convenient "
-"payment solution for Sudanese businesses using WooCommerce."
+"customers to make payments through Sudan's Bank of Khartoum application or "
+"other sudanese banks applications. Customers can upload a copy of the bank "
+"receipt with the transfer number to the checkout page, which will then be "
+"placed in a \"processing\" status until it is reviewed and completed by site "
+"admins. This plugin is easy to install and configure, and it provides a "
+"convenient payment solution for Sudanese businesses using WooCommerce."
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:79
+#: includes/wc-sudan-payment-gateway.php:212
+#: includes/wc-sudan-payment-gateway.php:254
+msgid "Sudani"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:327
+msgid "Sudani balance transfer"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:80
 msgid ""
 "This controls the title for the payment method the customer sees during "
 "checkout."
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:77
+#: includes/wc-sudan-payment-gateway.php:78
 msgid "Title"
 msgstr ""
 
@@ -165,6 +216,15 @@ msgstr ""
 msgid "Trx"
 msgstr ""
 
-#: includes/wc-sudan-payment-gateway.php:341
+#: includes/wc-sudan-payment-gateway.php:393
 msgid "Upload the receipt image"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:213
+#: includes/wc-sudan-payment-gateway.php:255
+msgid "Zain"
+msgstr ""
+
+#: includes/wc-sudan-payment-gateway.php:331
+msgid "Zain balance transfer"
 msgstr ""

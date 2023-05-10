@@ -39,6 +39,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				array(
 					array(
 						'account_name' => $this->get_option('account_name'),
+						'account_type' => $this->get_option('account_type'),
 						'account_number' => $this->get_option('account_number'),
 						'phone_number' => $this->get_option('phone_number'),
 						'bank_branch' => $this->get_option('bank_branch'),
@@ -125,6 +126,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 			) {
 
 				$account_names = wc_clean(wp_unslash($_POST['bacs_account_name']));
+				$account_types = wc_clean(wp_unslash($_POST['bacs_account_type']));
 				$account_numbers = wc_clean(wp_unslash($_POST['bacs_account_number']));
 				$bank_branchs = wc_clean(wp_unslash($_POST['bacs_bank_branch']));
 				$phone_numbers = wc_clean(wp_unslash($_POST['bacs_phone_number']));
@@ -136,6 +138,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 
 					$accounts[] = array(
 						'account_name' => $account_names[$i],
+						'account_type' => $account_types[$i],
 						'account_number' => $account_numbers[$i],
 						'bank_branch' => $bank_branchs[$i],
 						'phone_number' => $phone_numbers[$i],
@@ -174,6 +177,9 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 										<?php esc_html_e('Account name', 'wc-sudan-gateway'); ?>
 									</th>
 									<th>
+										<?php esc_html_e('Account type', 'wc-sudan-gateway'); ?>
+									</th>
+									<th>
 										<?php esc_html_e('Account number', 'wc-sudan-gateway'); ?>
 									</th>
 									<th>
@@ -194,6 +200,21 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 									<tr class="account">
 										<td class="sort"></td>
 										<td><input type="text" value="<?php echo esc_attr(wp_unslash($account['account_name']));?>" name="bacs_account_name[<?php echo esc_attr($i);?>]" /></td>
+										<td>
+											<?php
+												$account_type = $account['account_type'] ?? 'bankak';
+											?>
+											<select name="bacs_account_type[<?php echo esc_attr($i);?>]" 
+											style="width: 100%!important;padding: 0 10px;margin: 0;border: 0;outline: 0;background: transparent none;">
+												<option value="bankak"<?php if($account_type == 'bankak')echo ' selected="selected"';?>><?php echo esc_html_e('Bankak', 'wc-sudan-gateway');?></option>
+												<option value="ocash"<?php if($account_type == 'ocash')echo ' selected="selected"';?>><?php echo esc_html_e('O-Cash', 'wc-sudan-gateway');?></option>
+												<option value="fawri"<?php if($account_type == 'fawri')echo ' selected="selected"';?>><?php echo esc_html_e('Fawri', 'wc-sudan-gateway');?></option>
+												<option value="sudani"<?php if($account_type == 'sudani')echo ' selected="selected"';?>><?php echo esc_html_e('Sudani', 'wc-sudan-gateway');?></option>
+												<option value="zain"<?php if($account_type == 'zain')echo ' selected="selected"';?>><?php echo esc_html_e('Zain', 'wc-sudan-gateway');?></option>
+												<option value="mtn"<?php if($account_type == 'mtn')echo ' selected="selected"';?>><?php echo esc_html_e('MTN', 'wc-sudan-gateway');?></option>
+												<option value="custom"<?php if($account_type == 'custom')echo ' selected="selected"';?>><?php echo esc_html_e('Custom Bank', 'wc-sudan-gateway');?></option>
+											</select>
+										</td>
 										<td><input type="text" value="<?php echo esc_attr($account['account_number']);?>" name="bacs_account_number[<?php echo esc_attr($i);?>]" /></td>
 										<td><input type="text" value="<?php echo esc_attr(wp_unslash($account['bank_branch']));?>" name="bacs_bank_branch[<?php echo esc_attr($i);?>]" /></td>
 										<td><input type="text" value="<?php echo esc_attr($account['phone_number']);?>" name="bacs_phone_number[<?php echo esc_attr($i);?>]" /></td>
@@ -220,13 +241,27 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 
 								var size = jQuery('#bacs_accounts').find('tbody .account').length;
 
-								jQuery('<tr class="account">\
-															<td class="sort"></td>\
-															<td><input type="text" name="bacs_account_name[' + size + ']" /></td>\
-															<td><input type="text" name="bacs_account_number[' + size + ']" /></td>\
-															<td><input type="text" name="bacs_bank_branch[' + size + ']" /></td>\
-															<td><input type="text" name="bacs_phone_number[' + size + ']" /></td>\
-														</tr>').appendTo('#bacs_accounts table tbody');
+								jQuery(
+									'<tr class="account">\
+										<td class="sort"></td>\
+										<td><input type="text" name="bacs_account_name[' + size + ']" /></td>\
+										<td>\
+											<select  name="bacs_account_type[' + size + ']"\
+											style="width: 100%!important;padding: 0 10px;margin: 0;border: 0;outline: 0;background: transparent none;">\
+												<option value="bankak"><?php echo esc_html_e('Bankak', 'wc-sudan-gateway');?></option>\
+												<option value="ocash"><?php echo esc_html_e('O-Cash', 'wc-sudan-gateway');?></option>\
+												<option value="fawri"><?php echo esc_html_e('Fawri', 'wc-sudan-gateway');?></option>\
+												<option value="sudani"><?php echo esc_html_e('Sudani', 'wc-sudan-gateway');?></option>\
+												<option value="zain"><?php echo esc_html_e('Zain', 'wc-sudan-gateway');?></option>\
+												<option value="mtn"><?php echo esc_html_e('MTN', 'wc-sudan-gateway');?></option>\
+												<option value="custom"><?php echo esc_html_e('Custom Bank', 'wc-sudan-gateway');?></option>\
+											</select>\
+										</td>\
+										<td><input type="text" name="bacs_account_number[' + size + ']" /></td>\
+										<td><input type="text" name="bacs_bank_branch[' + size + ']" /></td>\
+										<td><input type="text" name="bacs_phone_number[' + size + ']" /></td>\
+									</tr>'
+								).appendTo('#bacs_accounts table tbody');
 
 								return false;
 							});
@@ -258,52 +293,83 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 
 			if (!empty($bacs_accounts)) {
 				?>
-				<section class="woocommerce-bacs-bank-details">
+				<section class="woocommerce-bacs-bank-details bank-accounts">
 					<?php
 					foreach ($bacs_accounts as $bacs_account) {
 
 						$account_name = $bacs_account['account_name'] ?? '';
+						$account_type = $bacs_account['account_type'] ?? '';
 						$account_number = $bacs_account['account_number'] ?? '';
 						$bank_branch = $bacs_account['bank_branch'] ?? '';
 						$phone_number = $bacs_account['phone_number'] ?? '';
 
+						if(in_array($account_type, ['mtn', 'zain', 'sudani'])){
+							if(!$account_number && $phone_number){
+								$account_number = $phone_number;
+								$phone_number = '';
+							}
+						}
+
 						?>
-						<table class="bank-table">
-							<thead>
-								<tr>
-									<td colspan="2">
-										<div class="td-inner td-name">
-											<div>
-												<?php echo esc_html($account_name); ?>
-											</div>
-											<div>
-												<div class="account-number"><span class="copy">
-														<?php echo esc_html($account_number); ?>
-													</span><span class="copied"><?php echo _e('copied', 'wc-sudan-gateway')?></span></div>
-											</div>
-										</div>
-									</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<div>
-											<div class="td-inner">
-												<?php echo esc_html($bank_branch); ?>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div>
-											<div class="td-inner">
-												<?php echo esc_html($phone_number); ?>
-											</div>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+
+						<div class="bank-account">
+							<div class="account-head">
+								<?php
+
+								switch ($account_type){
+									case 'bankak':
+										_e('Bankak transfer', 'wc-sudan-gateway');
+										break;
+									
+									case 'ocash':
+										_e('O-Cash transfer', 'wc-sudan-gateway');
+										break;
+									
+									case 'fawri':
+										_e('Fawri transfer', 'wc-sudan-gateway');
+										break;
+									
+									case 'sudani':
+										_e('Sudani balance transfer', 'wc-sudan-gateway');
+										break;
+									
+									case 'zain':
+										_e('Zain balance transfer', 'wc-sudan-gateway');
+										break;
+									
+									case 'mtn':
+										_e('MTN balance transfer', 'wc-sudan-gateway');
+										break;
+								}
+
+								?>
+							</div>
+							<div class="account-body">
+								<div class="account-name">
+									<?php echo esc_html($account_name); ?>
+								</div>
+								<div class="account-number">
+									<a class="account-number-btn" href="javacript:void(0);">
+										<span class="copy"><?php echo esc_html($account_number); ?></span>
+										<span class="copied"><?php echo _e('copied', 'wc-sudan-gateway')?></span>
+									</a>
+								</div>
+							</div>
+							<?php
+								if($bank_branch || $phone_number){
+							?>
+								<div class="account-footer">
+									<div class="bank-branch">
+										<?php echo esc_html($bank_branch); ?>
+									</div>
+									<div class="phone-number">
+										<?php echo esc_html($phone_number); ?>
+									</div>
+								</div>
+							<?php
+								}
+							?>
+						</div>
 						<?php
 					}
 					?>
@@ -323,28 +389,31 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 			$this->bank_details();
 
 			?>
-			<div id="mbokReceipt">
+			<div style="text-align: center; padding: 0; margin-bottom: 10px;">
+				<i class="fas fa-arrow-down" style="text-shadow: 0 -1px 1px rgb(0 0 0 / 10%), 0 1px 0 rgb(255 255 255 / 60%); color: transparent; font-size: 75px; margin: 2px;"></i>
+			</div>
+			<div id="supgReceipt">
+				<div class="form-group">
+					<label for="bank_payment_receipt" class="payment-receipt-btn"><i class="fas fa-upload"></i>
+						<?php _e('Upload the receipt image', 'wc-sudan-gateway'); ?>
+					</label>
+					<input type="file" id="bank_payment_receipt"
+						onclick="this.value=null;jQuery('.receipt-preview').slideUp();"
+						onchange="document.getElementById('receiptPreview').src = window.URL.createObjectURL(this.files[0]);jQuery('.receipt-preview').slideDown();"
+						required>
+				</div>
+				<div class="form-group receipt-preview">
+					<img id="receiptPreview"/>
+				</div>
 				<?php if ($this->require_trx == 'yes'): ?>
+					<hr style="border-color: white;">
 					<div class="form-group form-group-trx">
 						<label for="bank_payment_trx" class="">
 							<?php _e('Enter the bank payment TRX', 'wc-sudan-gateway'); ?>
 						</label>
 						<input type="text" name="bank_payment_trx" class="bank_payment_trx" required>
 					</div>
-					<hr style="border-color: white;">
 				<?php endif; ?>
-				<div class="form-group">
-					<label for="bank_payment_receipt" class="payment-receipt-btn"><i class="fa-solid fa-upload"></i>
-						<?php _e('Upload the receipt image', 'wc-sudan-gateway'); ?>
-					</label>
-					<input type="file" id="bank_payment_receipt"
-						onclick="this.value=null;document.getElementById('receiptPreview').src = ''"
-						onchange="document.getElementById('receiptPreview').src = window.URL.createObjectURL(this.files[0])"
-						required>
-				</div>
-				<div class="form-group receipt-preview">
-					<img id="receiptPreview" />
-				</div>
 				<input type="hidden" name="attach_id" class="attach_id">
 			</div>
 			<?php
@@ -357,7 +426,7 @@ if (!class_exists('WC_Sudan_Payment_Gateway')) {
 				(!is_numeric($_POST['attach_id'])) ||
 				(($this->require_trx == 'yes') && (!isset($_POST['bank_payment_trx']) || empty($_POST['bank_payment_trx'])))
 			) {
-				wc_add_notice(__('<strong>mBok</strong> Please insert Receipt Image and TRX number correctly', 'wc-sudan-gateway'), 'error');
+				wc_add_notice(__('<strong>Sudan Payment Gateway</strong> Please insert Receipt Image and TRX number correctly', 'wc-sudan-gateway'), 'error');
 				return false;
 			}
 			return true;
