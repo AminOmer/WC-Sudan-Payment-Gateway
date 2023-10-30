@@ -52,6 +52,10 @@ A: Just WooCommerce.
 2. Sudan Payment Gateway - checkout screen.
 3. Sudan Payment Gateway - checkout screen (mobile).
 
+== Support ==
+
+For support and inquiries, visit [https://AminOmer.com/](https://AminOmer.com/).
+
 == Changelog ==
 
 = 1.0.0 =
