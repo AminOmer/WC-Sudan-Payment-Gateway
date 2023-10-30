@@ -54,7 +54,7 @@ A: Just WooCommerce.
 
 == Support ==
 
-For support and inquiries, visit [https://www.AminOmer.com/](https://www.AminOmer.com/).
+For support and inquiries, visit [https://www.AminOmer.com/support/](https://www.AminOmer.com/support/).
 
 == Changelog ==
 
