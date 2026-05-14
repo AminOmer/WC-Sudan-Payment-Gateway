@@ -4,6 +4,8 @@ jQuery(document).ready(function ($) {
         var fd = new FormData();
         fd.append('file', $('#bank_payment_receipt')[0].files[0]);
         fd.append('action', 'invoice_response');
+        fd.append('nonce', the_ajax_script.nonce);
+        
         $('.payment-receipt-btn').addClass('loading');
         $('.receipt-preview').addClass('loading');
 
@@ -22,7 +24,13 @@ jQuery(document).ready(function ($) {
                 } else {
                     $('.receipt-preview').removeClass('loading');
                     $('.payment-receipt-btn').removeClass('loading');
-                    $('.attach_id').val(response);
+                    if (!response.success) {
+                        alert(response.data || 'Invalid File');
+                        $('.attach_id').val('');
+                        return;
+                    }
+
+                    $('.attach_id').val(response.data.attach_id);
                 }
             }
         });

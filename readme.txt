@@ -1,79 +1,98 @@
 === Sudan Payment Gateway for WooCommerce ===
 Contributors: AminOmer
-Tags: WooCommerce, Payment, Sudan, Bank of Khartoum, mBok
-Requires at least: 5.0
-Tested up to: 6.2
-Stable tag: 1.2.0
+Tags: woocommerce, payment gateway, sudan, bank of khartoum, mbok
+Requires at least: 5.5
+Tested up to: 6.9
+Requires PHP: 7.4
+Stable tag: 1.2.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
-Plugin Logo: wc-sudan-payment-gateway.png
 
 == Description ==
 
-Sudan Payment Gateway for WooCommerce is a payment plugin that enables customers to make payments through Sudan's Bank of Khartoum using the mBok application. Customers can upload a copy of the bank receipt with the transfer number to the checkout page, which will then be placed in a "processing" status until it is reviewed and completed by site admins. This plugin is easy to install and configure, and it provides a convenient payment solution for Sudanese businesses using WooCommerce.
+Sudan Payment Gateway for WooCommerce enables customers to make payments through Sudanese banking applications such as Bank of Khartoum (mBok) and upload their payment receipt during checkout for manual verification by the store administrator.
+
+The uploaded receipt and transfer number are attached to the WooCommerce order and the order is automatically placed into processing status until the payment is reviewed.
+
+Features:
+
+* WooCommerce payment gateway integration
+* Bank transfer receipt upload support
+* Transfer number submission
+* Manual payment verification workflow
+* Mobile-friendly checkout interface
+* Arabic language support
+* Secure file upload validation
+* Compatible with modern WooCommerce versions
 
 == Installation ==
 
-1. Upload the plugin files to the /wp-content/plugins/ directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/` directory or install the plugin through the WordPress plugins screen.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Go to the WooCommerce settings page and click on the 'Payments' tab.
-4. Find the Sudan Payment Gateway method and click on 'Enable'.
-5. Configure the payment method settings according to your preferences.
+3. Go to WooCommerce → Settings → Payments.
+4. Enable "Sudan Payment Gateway".
+5. Configure your bank account information and save settings.
 
 == Frequently Asked Questions ==
 
-Q: How do I install this plugin?
-A: You can install this plugin by downloading the plugin zip file from the WordPress plugin repository and uploading it to your WordPress site. Alternatively, you can install it directly from the WordPress plugin repository by searching for "Sudan Payment Gateway for WooCommerce" in the Plugins section of your WordPress dashboard.
+= Does this plugin require WooCommerce? =
 
-Q: How do I enable the Bank of Khartoum (mBok) payment method in WooCommerce?
-A: After activating the plugin, go to the WooCommerce Settings page and click on the Payments tab. You should see the Bank of Khartoum (mBok) payment method listed there. Click on it to enable it.
+Yes. WooCommerce must be installed and activated.
 
-Q: What information do I need to provide to customers who choose the Bank of Khartoum (mBok) payment method?
-A: You should provide your bank account number, your name, your bank branch, and your phone number to customers who choose this payment method. They will need to enter this information in the Bank of Khartoum (mBok) application when making the payment.
+= Which payment methods are supported? =
 
-Q: How do customers upload a copy of the bank receipt?
-A: After making the payment through the Bank of Khartoum (mBok) application, customers should receive a notification with a transfer number. They can then upload a copy of the bank receipt with the transfer number to the checkout page when submitting the order.
+The plugin supports manual payments through Sudanese banking applications such as Bank of Khartoum (mBok).
 
-Q: How do I review and complete pending applications?
-A: You can review and complete pending applications from the Orders page in your WordPress dashboard. Look for orders with a "pending" status and click on them to view the details. You should see a copy of the bank receipt and the transfer number uploaded by the customer. Once you have verified the payment, you can mark the order as completed.
+= Can customers upload payment receipts? =
 
-Q: Is this plugin free?
-A: Yes, this plugin is released under the GPL v2 or later license and is free to use, modify, and distribute. However, you may need to pay transaction fees to the Bank of Khartoum (mBok) for processing payments.
+Yes. Customers can upload an image of the payment receipt during checkout.
 
-Q: Is this plugin free?
-A: Yes, this plugin is free to use.
+= What file types are allowed? =
 
-Q: Does this plugin require any additional plugins to work?
-A: Just WooCommerce.
+JPG, JPEG, PNG, and GIF image formats.
+
+= Is the uploaded file secure? =
+
+Yes. The plugin validates uploaded files and uses secure WordPress upload handling.
+
+= Is the plugin free? =
+
+Yes. The plugin is licensed under GPLv3 or later.
 
 == Screenshots ==
 
-1. Inserting a bank info in WooCommerce settings.
-2. Sudan Payment Gateway - checkout screen.
-3. Sudan Payment Gateway - checkout screen (mobile).
-
-== Support ==
-
-For support and inquiries, visit https://www.AminOmer.com/.
+1. WooCommerce payment gateway settings.
+2. Checkout payment form.
+3. Mobile checkout interface.
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.2.1 =
 
-* Plugin released.
-
-= 1.1.0 =
-
-* Arabic language added.
+* Security improvements for receipt uploads.
+* Added nonce verification for AJAX requests.
+* Replaced direct file uploads with secure WordPress upload handling.
+* Improved file validation and sanitization.
+* Compatibility improvements for latest WordPress versions.
 
 = 1.2.0 =
 
 * User interface improved.
 
+= 1.1.0 =
+
+* Arabic language added.
+
+= 1.0.0 =
+
+* Initial release.
+
 == Upgrade Notice ==
 
-Please make a backup of banks information first before upgrage this plguin.
+= 1.2.1 =
+
+This update includes important security fixes related to file uploads. Updating immediately is strongly recommended.
 
 == Credits ==
 
-This plugin was created by Amin Omer.
+Developed by Amin Omer.
