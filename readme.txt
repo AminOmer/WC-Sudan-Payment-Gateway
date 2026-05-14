@@ -4,7 +4,7 @@ Tags: woocommerce, payment gateway, sudan, bank of khartoum, mbok
 Requires at least: 5.5
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.2.1
+Stable tag: 1.2.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -67,13 +67,21 @@ Yes. The plugin is licensed under GPLv3 or later.
 
 == Changelog ==
 
-= 1.2.1 =
+= 1.2.3 =
 
 * Security improvements for receipt uploads.
 * Added nonce verification for AJAX requests.
 * Replaced direct file uploads with secure WordPress upload handling.
 * Improved file validation and sanitization.
 * Compatibility improvements for latest WordPress versions.
+
+= 1.2.2 =
+
+* Some bugs have been fixed.
+
+= 1.2.1 =
+
+* Some bugs have been fixed.
 
 = 1.2.0 =
 
