@@ -4,25 +4,26 @@ Tags: woocommerce, payment gateway, sudan, bank of khartoum, mbok
 Requires at least: 5.5
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
-Sudan Payment Gateway for WooCommerce enables customers to make payments through Sudanese banking applications such as Bank of Khartoum (mBok) and upload their payment receipt during checkout for manual verification by the store administrator.
+Sudan Payment Gateway for WooCommerce enables store administrators to accept manual payments through Sudanese banking applications such as Bank of Khartoum (mBok).
 
-The uploaded receipt and transfer number are attached to the WooCommerce order and the order is automatically placed into processing status until the payment is reviewed.
+The plugin allows payment receipt management within WooCommerce orders and supports manual payment verification by the store administrator.
 
 Features:
 
 * WooCommerce payment gateway integration
-* Bank transfer receipt upload support
+* Manual bank transfer payment workflow
 * Transfer number submission
 * Manual payment verification workflow
 * Mobile-friendly checkout interface
 * Arabic language support
-* Secure file upload validation
+* Secure file validation and upload handling
+* Capability checks for protected upload actions
 * Compatible with modern WooCommerce versions
 
 == Installation ==
@@ -43,9 +44,9 @@ Yes. WooCommerce must be installed and activated.
 
 The plugin supports manual payments through Sudanese banking applications such as Bank of Khartoum (mBok).
 
-= Can customers upload payment receipts? =
+= Who can upload payment receipt files? =
 
-Yes. Customers can upload an image of the payment receipt during checkout.
+Receipt upload actions are protected with nonce verification and WordPress capability checks.
 
 = What file types are allowed? =
 
@@ -53,7 +54,7 @@ JPG, JPEG, PNG, and GIF image formats.
 
 = Is the uploaded file secure? =
 
-Yes. The plugin validates uploaded files and uses secure WordPress upload handling.
+Yes. The plugin uses nonce verification, capability checks, file type validation, MIME validation, and secure WordPress upload handling.
 
 = Is the plugin free? =
 
@@ -66,6 +67,12 @@ Yes. The plugin is licensed under GPLv3 or later.
 3. Mobile checkout interface.
 
 == Changelog ==
+
+= 1.2.4 =
+
+* Added capability checks for protected upload actions.
+* Improved access control for receipt upload handling.
+* Continued security improvements for file upload validation.
 
 = 1.2.3 =
 
@@ -97,9 +104,9 @@ Yes. The plugin is licensed under GPLv3 or later.
 
 == Upgrade Notice ==
 
-= 1.2.1 =
+= 1.2.4 =
 
-This update includes important security fixes related to file uploads. Updating immediately is strongly recommended.
+This update includes important access control and upload security improvements. Updating immediately is strongly recommended.
 
 == Credits ==
 

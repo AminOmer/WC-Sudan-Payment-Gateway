@@ -4,7 +4,7 @@
  * Plugin Name: Sudan Payment Gateway for WooCommerce
  * Plugin URI: https://github.com/AminOmer/WC-Sudan-Payment-Gateway
  * Description: Sudan Payment Gateway for WooCommerce enables customers to pay through Sudanese bank applications and upload a bank receipt with the transfer number during checkout for admin review.
- * Version: 1.2.3
+ * Version: 1.2.4
  * Requires at least: 5.5
  * Tested up to: 6.9
  * Requires PHP: 7.4
